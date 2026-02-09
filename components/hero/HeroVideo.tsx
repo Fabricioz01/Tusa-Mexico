@@ -22,6 +22,29 @@ export default function HeroVideo() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black z-10" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent z-10" />
 
+      {/* Animated particles */}
+      <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-tusa-ocean/40 rounded-full"
+            style={{
+              left: `${10 + i * 15}%`,
+              top: `${30 + (i % 3) * 20}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.2, 0.6, 0.2],
+            }}
+            transition={{
+              duration: 4 + i,
+              repeat: Infinity,
+              delay: i * 0.8,
+            }}
+          />
+        ))}
+      </div>
+
       {/* Content */}
       <div className="relative z-20 h-full flex flex-col justify-center items-center text-center px-4 sm:px-6">
         <motion.div
@@ -30,9 +53,13 @@ export default function HeroVideo() {
           transition={{ duration: 1, delay: 0.3 }}
           className="mb-4"
         >
-          <span className="inline-block text-xs sm:text-sm tracking-[0.4em] uppercase text-tusa-ocean font-bold mb-4 border border-tusa-ocean/30 px-4 py-1.5 rounded-full">
+          <motion.span
+            className="inline-block text-xs sm:text-sm tracking-[0.4em] uppercase text-tusa-ocean font-bold mb-4 border border-tusa-ocean/30 px-4 py-1.5 rounded-full"
+            animate={{ borderColor: ['rgba(0,163,224,0.3)', 'rgba(0,163,224,0.6)', 'rgba(0,163,224,0.3)'] }}
+            transition={{ duration: 3, repeat: Infinity }}
+          >
             TUSA México
-          </span>
+          </motion.span>
         </motion.div>
 
         <motion.h1
@@ -42,9 +69,15 @@ export default function HeroVideo() {
           className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white leading-[0.9]"
         >
           {heroData.headline.split(' ').map((word, i) => (
-            <span key={i} className={i === 2 ? 'text-gradient-ocean' : ''}>
+            <motion.span
+              key={i}
+              className={i === 2 ? 'text-gradient-animated' : ''}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 + i * 0.15 }}
+            >
               {word}{' '}
-            </span>
+            </motion.span>
           ))}
         </motion.h1>
 
@@ -63,26 +96,34 @@ export default function HeroVideo() {
           transition={{ duration: 1, delay: 1.1 }}
           className="mt-10 flex flex-col sm:flex-row gap-4"
         >
-          <a
+          <motion.a
             href={heroData.ctaHref}
-            className="group relative inline-flex items-center justify-center gap-2 bg-tusa-blue hover:bg-tusa-ocean text-white px-8 py-4 rounded-full font-bold text-sm tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(0,102,204,0.4)]"
+            className="group relative inline-flex items-center justify-center gap-2 bg-tusa-blue hover:bg-tusa-ocean text-white px-8 py-4 rounded-full font-bold text-sm tracking-wide transition-all duration-300 overflow-hidden"
+            whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(0,102,204,0.4)' }}
+            whileTap={{ scale: 0.95 }}
           >
-            {heroData.ctaText}
-            <svg
-              className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+            {/* Shine sweep */}
+            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+            <span className="relative z-10">{heroData.ctaText}</span>
+            <motion.svg
+              className="w-4 h-4 relative z-10"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              animate={{ x: [0, 4, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
             >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-          <a
+            </motion.svg>
+          </motion.a>
+          <motion.a
             href="#distribuidores"
             className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/40 text-white px-8 py-4 rounded-full font-bold text-sm tracking-wide transition-all duration-300 hover:bg-white/5"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             ENCUENTRA TU TIENDA
-          </a>
+          </motion.a>
         </motion.div>
       </div>
 
@@ -93,7 +134,11 @@ export default function HeroVideo() {
         transition={{ delay: 2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
       >
-        <div className="flex flex-col items-center gap-2">
+        <motion.div
+          className="flex flex-col items-center gap-2"
+          animate={{ y: [0, 5, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
           <span className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-medium">
             Scroll
           </span>
@@ -104,7 +149,7 @@ export default function HeroVideo() {
               className="w-1 h-1.5 bg-white rounded-full"
             />
           </div>
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );

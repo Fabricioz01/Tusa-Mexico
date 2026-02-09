@@ -30,7 +30,18 @@ const socialIcons: Record<string, ReactNode> = {
 export default function ContactSection() {
   return (
     <section id="contacto" className="py-20 md:py-32 bg-tusa-dark relative overflow-hidden">
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-tusa-blue/5 rounded-full blur-[120px]" />
+      {/* Floating bg decorations */}
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-tusa-blue/5 rounded-full blur-[120px] animate-float-slow" />
+      <div className="absolute top-20 left-10 w-40 h-40 bg-tusa-ocean/5 rounded-full blur-[80px] animate-float-delay" />
+
+      {/* Decorative dots grid */}
+      <div className="absolute top-10 right-10 opacity-[0.04]">
+        <div className="grid grid-cols-6 gap-4">
+          {[...Array(24)].map((_, i) => (
+            <div key={i} className="w-1 h-1 bg-white rounded-full" />
+          ))}
+        </div>
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -40,11 +51,17 @@ export default function ContactSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 md:mb-16"
         >
-          <span className="text-xs tracking-[0.3em] uppercase text-tusa-ocean font-bold">
+          <motion.span
+            className="text-xs tracking-[0.3em] uppercase text-tusa-ocean font-bold"
+            initial={{ opacity: 0, letterSpacing: '0.1em' }}
+            whileInView={{ opacity: 1, letterSpacing: '0.3em' }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             Contacto Directo
-          </span>
+          </motion.span>
           <h2 className="mt-3 text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight">
-            Hablemos
+            <span className="text-gradient-animated">Hablemos</span>
           </h2>
           <p className="mt-4 text-gray-400 max-w-lg mx-auto text-sm md:text-base">
             ¿Tienes dudas sobre equipo, garantías o distribución? Escríbenos directamente.
@@ -54,27 +71,31 @@ export default function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Contact form */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6 sm:p-8"
+            transition={{ duration: 0.6 }}
+            className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6 sm:p-8 hover:border-white/10 transition-colors duration-500"
           >
             <h3 className="text-xl font-bold text-white mb-6">Envíanos un mensaje</h3>
             <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input
-                  type="text"
-                  placeholder="Nombre"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-tusa-blue/50 focus:ring-1 focus:ring-tusa-blue/30 transition-all"
-                />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-tusa-blue/50 focus:ring-1 focus:ring-tusa-blue/30 transition-all"
-                />
+                <motion.div whileFocus={{ scale: 1.01 }}>
+                  <input
+                    type="text"
+                    placeholder="Nombre"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-tusa-blue/50 focus:ring-1 focus:ring-tusa-blue/30 focus:shadow-[0_0_20px_rgba(0,102,204,0.1)] transition-all duration-300"
+                  />
+                </motion.div>
+                <motion.div whileFocus={{ scale: 1.01 }}>
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-tusa-blue/50 focus:ring-1 focus:ring-tusa-blue/30 focus:shadow-[0_0_20px_rgba(0,102,204,0.1)] transition-all duration-300"
+                  />
+                </motion.div>
               </div>
-              <select className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-gray-400 focus:outline-none focus:border-tusa-blue/50 appearance-none cursor-pointer">
+              <select className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-gray-400 focus:outline-none focus:border-tusa-blue/50 focus:shadow-[0_0_20px_rgba(0,102,204,0.1)] appearance-none cursor-pointer transition-all duration-300">
                 <option value="">Asunto</option>
                 <option value="producto">Información de producto</option>
                 <option value="garantia">Registro de garantía</option>
@@ -85,33 +106,48 @@ export default function ContactSection() {
               <textarea
                 rows={4}
                 placeholder="Tu mensaje..."
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-tusa-blue/50 focus:ring-1 focus:ring-tusa-blue/30 transition-all resize-none"
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-tusa-blue/50 focus:ring-1 focus:ring-tusa-blue/30 focus:shadow-[0_0_20px_rgba(0,102,204,0.1)] transition-all duration-300 resize-none"
               />
-              <button
+              <motion.button
                 type="submit"
-                className="w-full py-4 bg-tusa-blue hover:bg-tusa-ocean text-white font-bold text-sm rounded-xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,102,204,0.3)]"
+                whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(0,102,204,0.4)' }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full py-4 bg-tusa-blue hover:bg-tusa-ocean text-white font-bold text-sm rounded-xl transition-all duration-300 relative overflow-hidden group"
               >
-                Enviar mensaje
-              </button>
+                <span className="relative z-10">Enviar mensaje</span>
+                {/* Animated shine */}
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              </motion.button>
             </form>
           </motion.div>
 
           {/* Offices + Social */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            {offices.map((office) => (
-              <div
+            {offices.map((office, i) => (
+              <motion.div
                 key={office.region}
-                className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15 }}
+                whileHover={{ scale: 1.02 }}
+                className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6 hover:border-tusa-ocean/20 transition-all duration-300 shimmer-on-hover"
               >
-                <h4 className="text-tusa-ocean text-xs font-bold uppercase tracking-widest mb-3">
+                <motion.h4
+                  className="text-tusa-ocean text-xs font-bold uppercase tracking-widest mb-3"
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + i * 0.15 }}
+                >
                   {office.region}
-                </h4>
+                </motion.h4>
                 <p className="text-white text-sm font-medium mb-1">{office.address}</p>
                 <p className="text-gray-400 text-sm mb-3">{office.city}</p>
                 <div className="space-y-1">
@@ -119,9 +155,11 @@ export default function ContactSection() {
                     <a
                       key={phone}
                       href={`tel:${phone.replace(/[.\s]/g, '')}`}
-                      className="block text-gray-300 text-sm hover:text-tusa-ocean transition-colors"
+                      className="block text-gray-300 text-sm hover:text-tusa-ocean transition-colors group"
                     >
-                      {phone}
+                      <span className="group-hover:translate-x-1 inline-block transition-transform">
+                        {phone}
+                      </span>
                     </a>
                   ))}
                 </div>
@@ -131,27 +169,39 @@ export default function ContactSection() {
                 >
                   {office.email}
                 </a>
-              </div>
+              </motion.div>
             ))}
 
             {/* Social */}
-            <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6"
+            >
               <h4 className="text-white text-sm font-bold mb-4">Síguenos</h4>
               <div className="flex gap-3">
-                {socialLinks.map((social) => (
-                  <a
+                {socialLinks.map((social, i) => (
+                  <motion.a
                     key={social.platform}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
                     className="w-11 h-11 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:bg-tusa-blue/20 hover:border-tusa-blue/30 transition-all duration-300"
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ type: 'spring', stiffness: 300, delay: 0.4 + i * 0.1 }}
+                    whileHover={{ scale: 1.15, rotate: 5 }}
+                    whileTap={{ scale: 0.9 }}
                   >
                     {socialIcons[social.platform]}
-                  </a>
+                  </motion.a>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

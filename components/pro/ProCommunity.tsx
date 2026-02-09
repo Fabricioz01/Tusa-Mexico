@@ -34,6 +34,22 @@ export default function ProCommunity() {
       <div className="absolute inset-0 bg-gradient-to-b from-tusa-dark via-tusa-deep to-tusa-dark" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-tusa-blue/30 to-transparent" />
 
+      {/* Floating particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(5)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-tusa-ocean/30 rounded-full animate-float"
+            style={{
+              left: `${15 + i * 18}%`,
+              top: `${20 + i * 12}%`,
+              animationDelay: `${i * 1.2}s`,
+              animationDuration: `${5 + i}s`,
+            }}
+          />
+        ))}
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left: Content */}
@@ -43,29 +59,61 @@ export default function ProCommunity() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block text-xs tracking-[0.3em] uppercase text-tusa-ocean font-bold mb-4 border border-tusa-ocean/30 px-4 py-1.5 rounded-full">
+            <motion.span
+              className="inline-block text-xs tracking-[0.3em] uppercase text-tusa-ocean font-bold mb-4 border border-tusa-ocean/30 px-4 py-1.5 rounded-full"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ type: 'spring', stiffness: 300, delay: 0.2 }}
+              whileHover={{ scale: 1.05, borderColor: 'rgba(0,163,224,0.6)' }}
+            >
               Exclusivo
-            </span>
+            </motion.span>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[0.95] mb-6">
               Comunidad<br />
-              <span className="text-gradient-ocean">Pro</span>
+              <span className="text-gradient-animated">Pro</span>
             </h2>
-            <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-4">
+            <motion.p
+              className="text-gray-300 text-base md:text-lg leading-relaxed mb-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+            >
               Una sección especial para los que vivimos de esto. Beneficios para instructores y centros de buceo que quieran trabajar con nosotros.
-            </p>
-            <p className="text-gray-500 text-sm leading-relaxed mb-8">
+            </motion.p>
+            <motion.p
+              className="text-gray-500 text-sm leading-relaxed mb-8"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+            >
               Si eres instructor certificado o administras un centro de buceo en México, únete a nuestra red profesional y accede a beneficios exclusivos.
-            </p>
+            </motion.p>
 
-            <a
+            <motion.a
               href="#contacto"
-              className="inline-flex items-center gap-2 bg-tusa-blue hover:bg-tusa-ocean text-white px-8 py-4 rounded-full font-bold text-sm tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(0,102,204,0.4)]"
+              className="inline-flex items-center gap-2 bg-tusa-blue hover:bg-tusa-ocean text-white px-8 py-4 rounded-full font-bold text-sm tracking-wide transition-all duration-300 hover:shadow-[0_0_40px_rgba(0,102,204,0.4)] group"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
             >
               Solicitar acceso Pro
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <motion.svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                animate={{ x: [0, 4, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
+              </motion.svg>
+            </motion.a>
           </motion.div>
 
           {/* Right: Benefits grid */}
@@ -73,16 +121,21 @@ export default function ProCommunity() {
             {proBenefits.map((benefit, i) => (
               <motion.div
                 key={benefit.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="bg-white/[0.03] border border-white/5 rounded-2xl p-6 hover:border-tusa-ocean/30 hover:bg-white/[0.05] transition-all duration-300"
+                transition={{ duration: 0.5, delay: i * 0.15 }}
+                whileHover={{ y: -6, scale: 1.02 }}
+                className="bg-white/[0.03] border border-white/5 rounded-2xl p-6 hover:border-tusa-ocean/30 hover:bg-white/[0.05] transition-all duration-300 group shimmer-on-hover"
               >
-                <div className="w-12 h-12 bg-tusa-ocean/10 rounded-xl flex items-center justify-center text-tusa-ocean mb-4">
+                <motion.div
+                  className="w-12 h-12 bg-tusa-ocean/10 rounded-xl flex items-center justify-center text-tusa-ocean mb-4 group-hover:bg-tusa-ocean/20 transition-colors duration-300"
+                  whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
+                  transition={{ duration: 0.5 }}
+                >
                   {iconMap[benefit.icon]}
-                </div>
-                <h3 className="text-white font-bold text-sm mb-2">{benefit.title}</h3>
+                </motion.div>
+                <h3 className="text-white font-bold text-sm mb-2 group-hover:text-tusa-ocean transition-colors duration-300">{benefit.title}</h3>
                 <p className="text-gray-400 text-xs leading-relaxed">{benefit.description}</p>
               </motion.div>
             ))}
