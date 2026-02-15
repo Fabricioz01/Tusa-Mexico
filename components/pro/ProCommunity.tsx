@@ -31,15 +31,15 @@ export default function ProCommunity() {
   return (
     <section id="pro" className="py-20 md:py-32 relative overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-tusa-dark via-tusa-deep to-tusa-dark" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-tusa-blue/30 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0b4f7a] via-[#145b91] to-[#0b4f7a]" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-tusa-ocean/40 to-transparent" />
 
       {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(5)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-tusa-ocean/30 rounded-full animate-float"
+            className="absolute w-1 h-1 bg-tusa-ocean/40 rounded-full animate-float"
             style={{
               left: `${15 + i * 18}%`,
               top: `${20 + i * 12}%`,
@@ -94,7 +94,7 @@ export default function ProCommunity() {
 
             <motion.a
               href="#contacto"
-              className="inline-flex items-center gap-2 bg-tusa-blue hover:bg-tusa-ocean text-white px-8 py-4 rounded-full font-bold text-sm tracking-wide transition-all duration-300 hover:shadow-[0_0_40px_rgba(0,102,204,0.4)] group"
+              className="inline-flex items-center gap-2 bg-tusa-ocean hover:bg-tusa-sky text-black px-8 py-4 rounded-full font-bold text-sm tracking-wide transition-all duration-300 hover:shadow-[0_0_40px_rgba(0,212,255,0.5)] group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, y: 20 }}
@@ -126,7 +126,7 @@ export default function ProCommunity() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.15 }}
                 whileHover={{ y: -6, scale: 1.02 }}
-                className="bg-white/[0.03] border border-white/5 rounded-2xl p-6 hover:border-tusa-ocean/30 hover:bg-white/[0.05] transition-all duration-300 group shimmer-on-hover"
+                className="bg-black/30 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:border-tusa-ocean/40 hover:bg-black/40 transition-all duration-300 group shimmer-on-hover"
               >
                 <motion.div
                   className="w-12 h-12 bg-tusa-ocean/10 rounded-xl flex items-center justify-center text-tusa-ocean mb-4 group-hover:bg-tusa-ocean/20 transition-colors duration-300"

@@ -18,8 +18,8 @@ export default function DealerLocator() {
   });
 
   return (
-    <section id="distribuidores" className="py-20 md:py-32 bg-black relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-tusa-blue/5 rounded-full blur-[150px] animate-float-slow" />
+    <section id="distribuidores" className="py-20 md:py-32 bg-gradient-to-b from-[#0b4f7a] via-[#145b91] to-[#0b4f7a] relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-tusa-ocean/10 rounded-full blur-[150px] animate-float-slow" />
 
       {/* Decorative compass / circles */}
       <div className="absolute top-20 right-20 w-40 h-40 animate-rotate-slow opacity-[0.03]">
@@ -63,7 +63,7 @@ export default function DealerLocator() {
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
-              animate={search ? { color: '#00a3e0' } : {}}
+              animate={search ? { color: '#00d4ff' } : {}}
             >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </motion.svg>
@@ -72,13 +72,13 @@ export default function DealerLocator() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Buscar por ciudad o nombre..."
-              className="w-full bg-zinc-900/80 border border-white/10 rounded-xl pl-11 pr-4 py-3.5 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-tusa-blue/50 focus:ring-1 focus:ring-tusa-blue/30 focus:shadow-[0_0_20px_rgba(0,102,204,0.1)] transition-all"
+              className="w-full bg-black/40 backdrop-blur-sm border border-white/20 rounded-xl pl-11 pr-4 py-3.5 text-sm text-white placeholder:text-gray-300 focus:outline-none focus:border-tusa-ocean/60 focus:ring-1 focus:ring-tusa-ocean/40 focus:shadow-[0_0_20px_rgba(0,212,255,0.25)] transition-all"
             />
           </div>
           <select
             value={selectedState}
             onChange={(e) => setSelectedState(e.target.value)}
-            className="bg-zinc-900/80 border border-white/10 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-tusa-blue/50 appearance-none cursor-pointer min-w-[200px]"
+            className="bg-black/40 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-tusa-ocean/60 appearance-none cursor-pointer min-w-[200px]"
           >
             <option value="all">Todos los estados</option>
             {dealerStates.map((state) => (
@@ -114,7 +114,7 @@ export default function DealerLocator() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
                 whileHover={{ y: -6 }}
-                className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6 group shimmer-on-hover transition-all duration-500"
+                className="bg-black/30 backdrop-blur-sm border border-white/20 rounded-2xl p-6 group hover:border-white/30 shimmer-on-hover transition-all duration-500"
               >
                 {/* Map pin icon with bounce */}
                 <motion.div

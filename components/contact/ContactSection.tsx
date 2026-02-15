@@ -29,10 +29,10 @@ const socialIcons: Record<string, ReactNode> = {
 
 export default function ContactSection() {
   return (
-    <section id="contacto" className="py-20 md:py-32 bg-tusa-dark relative overflow-hidden">
+    <section id="contacto" className="py-20 md:py-32 bg-gradient-to-br from-[#0b4f7a] via-[#145b91] to-[#0b4f7a] relative overflow-hidden">
       {/* Floating bg decorations */}
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-tusa-blue/5 rounded-full blur-[120px] animate-float-slow" />
-      <div className="absolute top-20 left-10 w-40 h-40 bg-tusa-ocean/5 rounded-full blur-[80px] animate-float-delay" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-tusa-ocean/15 rounded-full blur-[120px] animate-float-slow" />
+      <div className="absolute top-20 left-10 w-40 h-40 bg-tusa-sky/15 rounded-full blur-[80px] animate-float-delay" />
 
       {/* Decorative dots grid */}
       <div className="absolute top-10 right-10 opacity-[0.04]">
@@ -75,7 +75,7 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6 sm:p-8 hover:border-white/10 transition-colors duration-500"
+            className="bg-black/30 backdrop-blur-sm border border-white/20 rounded-2xl p-6 sm:p-8 hover:border-white/30 transition-colors duration-500"
           >
             <h3 className="text-xl font-bold text-white mb-6">Envíanos un mensaje</h3>
             <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
@@ -84,19 +84,19 @@ export default function ContactSection() {
                   <input
                     type="text"
                     placeholder="Nombre"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-tusa-blue/50 focus:ring-1 focus:ring-tusa-blue/30 focus:shadow-[0_0_20px_rgba(0,102,204,0.1)] transition-all duration-300"
+                    className="w-full bg-black/40 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-gray-300 focus:outline-none focus:border-tusa-ocean/60 focus:ring-1 focus:ring-tusa-ocean/40 focus:shadow-[0_0_20px_rgba(0,212,255,0.25)] transition-all duration-300"
                   />
                 </motion.div>
                 <motion.div whileFocus={{ scale: 1.01 }}>
                   <input
                     type="email"
                     placeholder="Email"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-tusa-blue/50 focus:ring-1 focus:ring-tusa-blue/30 focus:shadow-[0_0_20px_rgba(0,102,204,0.1)] transition-all duration-300"
+                    className="w-full bg-black/40 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-gray-300 focus:outline-none focus:border-tusa-ocean/60 focus:ring-1 focus:ring-tusa-ocean/40 focus:shadow-[0_0_20px_rgba(0,212,255,0.25)] transition-all duration-300"
                   />
                 </motion.div>
               </div>
-              <select className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-gray-400 focus:outline-none focus:border-tusa-blue/50 focus:shadow-[0_0_20px_rgba(0,102,204,0.1)] appearance-none cursor-pointer transition-all duration-300">
-                <option value="">Asunto</option>
+              <select className="w-full bg-black/40 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-tusa-ocean/60 focus:shadow-[0_0_20px_rgba(0,212,255,0.25)] appearance-none cursor-pointer transition-all duration-300 [&>option]:bg-zinc-900 [&>option]:text-white">
+                <option value="" className="text-gray-400">Asunto</option>
                 <option value="producto">Información de producto</option>
                 <option value="garantia">Registro de garantía</option>
                 <option value="distribucion">Distribución</option>
@@ -106,13 +106,13 @@ export default function ContactSection() {
               <textarea
                 rows={4}
                 placeholder="Tu mensaje..."
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-tusa-blue/50 focus:ring-1 focus:ring-tusa-blue/30 focus:shadow-[0_0_20px_rgba(0,102,204,0.1)] transition-all duration-300 resize-none"
+                className="w-full bg-black/40 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3 text-sm text-white placeholder:text-gray-300 focus:outline-none focus:border-tusa-ocean/60 focus:ring-1 focus:ring-tusa-ocean/40 focus:shadow-[0_0_20px_rgba(0,212,255,0.25)] transition-all duration-300 resize-none"
               />
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(0,102,204,0.4)' }}
+                whileHover={{ scale: 1.02, boxShadow: '0 0 30px rgba(0,212,255,0.4)' }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full py-4 bg-tusa-blue hover:bg-tusa-ocean text-white font-bold text-sm rounded-xl transition-all duration-300 relative overflow-hidden group"
+                className="w-full py-4 bg-tusa-ocean hover:bg-tusa-sky text-white font-bold text-sm rounded-xl transition-all duration-300 relative overflow-hidden group"
               >
                 <span className="relative z-10">Enviar mensaje</span>
                 {/* Animated shine */}
@@ -137,7 +137,7 @@ export default function ContactSection() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15 }}
                 whileHover={{ scale: 1.02 }}
-                className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6 hover:border-tusa-ocean/20 transition-all duration-300 shimmer-on-hover"
+                className="bg-black/30 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:border-tusa-ocean/40 transition-all duration-300 shimmer-on-hover"
               >
                 <motion.h4
                   className="text-tusa-ocean text-xs font-bold uppercase tracking-widest mb-3"
@@ -178,7 +178,7 @@ export default function ContactSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="bg-zinc-900/50 border border-white/5 rounded-2xl p-6"
+              className="bg-black/30 backdrop-blur-sm border border-white/20 rounded-2xl p-6"
             >
               <h4 className="text-white text-sm font-bold mb-4">Síguenos</h4>
               <div className="flex gap-3">
@@ -189,7 +189,7 @@ export default function ContactSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="w-11 h-11 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:bg-tusa-blue/20 hover:border-tusa-blue/30 transition-all duration-300"
+                    className="w-11 h-11 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:bg-tusa-ocean/20 hover:border-tusa-ocean/30 transition-all duration-300"
                     initial={{ opacity: 0, scale: 0 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}

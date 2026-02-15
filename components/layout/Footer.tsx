@@ -10,13 +10,13 @@ export default function Footer() {
   const marqueeItems = [...partnerBrands, ...partnerBrands];
 
   return (
-    <footer className="bg-zinc-950 border-t border-white/5">
+    <footer className="bg-gradient-to-b from-[#09334d] to-[#052336] border-t border-white/20">
       {/* Animated Partner Brands Marquee */}
       <div className="border-b border-white/5 py-6 overflow-hidden">
         <div className="relative">
           {/* Fade edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-zinc-950 to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-zinc-950 to-transparent z-10" />
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#09334d] to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#09334d] to-transparent z-10" />
 
           <div className="flex animate-marquee whitespace-nowrap">
             {marqueeItems.map((brand, i) => (
@@ -132,7 +132,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-gray-500 hover:text-white hover:bg-tusa-blue/20 hover:border-tusa-blue/30 transition-all duration-300"
+                className="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-gray-500 hover:text-white hover:bg-tusa-ocean/20 hover:border-tusa-ocean/30 transition-all duration-300"
                   whileHover={{ scale: 1.15, y: -3 }}
                   whileTap={{ scale: 0.9 }}
                   initial={{ opacity: 0, scale: 0 }}

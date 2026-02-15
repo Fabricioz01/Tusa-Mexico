@@ -19,8 +19,9 @@ export default function HeroVideo() {
       </video>
 
       {/* Gradient Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black z-10" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0b4f7a]/70 via-[#0b4f7a]/20 to-[#0b4f7a]/80 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0b4f7a]/40 via-transparent to-transparent z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-[#0b4f7a] z-10" />
 
       {/* Animated particles */}
       <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
@@ -55,7 +56,7 @@ export default function HeroVideo() {
         >
           <motion.span
             className="inline-block text-xs sm:text-sm tracking-[0.4em] uppercase text-tusa-ocean font-bold mb-4 border border-tusa-ocean/30 px-4 py-1.5 rounded-full"
-            animate={{ borderColor: ['rgba(0,163,224,0.3)', 'rgba(0,163,224,0.6)', 'rgba(0,163,224,0.3)'] }}
+            animate={{ borderColor: ['rgba(0,212,255,0.3)', 'rgba(0,212,255,0.6)', 'rgba(0,212,255,0.3)'] }}
             transition={{ duration: 3, repeat: Infinity }}
           >
             TUSA México
@@ -98,8 +99,8 @@ export default function HeroVideo() {
         >
           <motion.a
             href={heroData.ctaHref}
-            className="group relative inline-flex items-center justify-center gap-2 bg-tusa-blue hover:bg-tusa-ocean text-white px-8 py-4 rounded-full font-bold text-sm tracking-wide transition-all duration-300 overflow-hidden"
-            whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(0,102,204,0.4)' }}
+            className="group relative inline-flex items-center justify-center gap-2 bg-tusa-ocean hover:bg-tusa-sky text-black px-8 py-4 rounded-full font-bold text-sm tracking-wide transition-all duration-300 overflow-hidden"
+            whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(0,212,255,0.45)' }}
             whileTap={{ scale: 0.95 }}
           >
             {/* Shine sweep */}

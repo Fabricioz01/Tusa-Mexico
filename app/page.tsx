@@ -11,7 +11,7 @@ import SectionDivider from '@/components/ui/SectionDivider';
 
 export default function Home() {
   return (
-    <main className="bg-black min-h-screen">
+    <main className="bg-gradient-to-b from-[#0b4f7a] via-[#145b91] to-[#0b4f7a] min-h-screen">
       <Navbar />
       <HeroVideo />
       <SectionDivider variant="ocean" />

@@ -1,10 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-tusa-blue: #0066cc;
-  --color-tusa-dark: #050505;
-  --color-tusa-ocean: #00a3e0;
-  --color-tusa-deep: #001a33;
+  --color-tusa-blue: #0088cc;
+  --color-tusa-dark: #0b4f7a;
+  --color-tusa-ocean: #00d4ff;
+  --color-tusa-deep: #145b91;
+  --color-tusa-aqua: #00ffcc;
+  --color-tusa-light: #e0f7ff;
+  --color-tusa-sky: #4dd0e1;
+  --color-tusa-medium: #1a67a6;
 }
 
 /* Smooth scrolling */
@@ -42,7 +46,7 @@ html {
 
 /* Gradient text helper */
 .text-gradient-ocean {
-  background: linear-gradient(135deg, #00a3e0 0%, #0066cc 50%, #004499 100%);
+  background: linear-gradient(135deg, #00d4ff 0%, #0088cc 50%, #0077aa 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -50,7 +54,7 @@ html {
 
 /* Glow effect */
 .glow-blue {
-  box-shadow: 0 0 40px rgba(0, 102, 204, 0.3), 0 0 80px rgba(0, 102, 204, 0.1);
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.3), 0 0 80px rgba(0, 136, 204, 0.15);
 }
 
 /* Animated underline */
@@ -64,7 +68,7 @@ html {
   left: 0;
   width: 0;
   height: 2px;
-  background: #0066cc;
+  background: #00d4ff;
   transition: width 0.3s ease;
 }
 .animated-underline:hover::after {
@@ -144,8 +148,8 @@ html {
 
 /* Pulse glow */
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(0, 163, 224, 0.1); }
-  50% { box-shadow: 0 0 40px rgba(0, 163, 224, 0.3), 0 0 80px rgba(0, 102, 204, 0.1); }
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.15); }
+  50% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.4), 0 0 80px rgba(0, 136, 204, 0.2); }
 }
 .animate-pulse-glow {
   animation: pulse-glow 3s ease-in-out infinite;
@@ -175,7 +179,7 @@ html {
 
 /* Text gradient animated */
 .text-gradient-animated {
-  background: linear-gradient(270deg, #00a3e0, #0066cc, #00a3e0, #0066cc);
+  background: linear-gradient(270deg, #00d4ff, #0088cc, #00d4ff, #0088cc);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -189,7 +193,7 @@ html {
 }
 .card-hover-tilt:hover {
   transform: translateY(-8px) rotateX(2deg) rotateY(-1deg);
-  box-shadow: 0 20px 60px rgba(0, 102, 204, 0.15), 0 0 0 1px rgba(0, 163, 224, 0.1);
+  box-shadow: 0 20px 60px rgba(0, 136, 204, 0.2), 0 0 0 1px rgba(0, 212, 255, 0.15);
 }
 
 /* Border glow effect */
@@ -201,7 +205,7 @@ html {
   position: absolute;
   inset: -1px;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(0,163,224,0.3), transparent 40%, transparent 60%, rgba(0,102,204,0.3));
+  background: linear-gradient(135deg, rgba(0,212,255,0.3), transparent 40%, transparent 60%, rgba(0,136,204,0.3));
   z-index: -1;
   opacity: 0;
   transition: opacity 0.5s ease;

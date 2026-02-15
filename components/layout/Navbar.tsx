@@ -31,7 +31,7 @@ export default function Navbar() {
       <nav
         className={`fixed w-full z-[100] transition-all duration-500 ${
           scrolled
-            ? 'bg-black/90 backdrop-blur-xl py-3 shadow-2xl shadow-black/50'
+            ? 'bg-[#0b4f7a]/85 backdrop-blur-xl py-3 shadow-2xl shadow-black/30'
             : 'bg-transparent py-5'
         }`}
       >
@@ -67,7 +67,7 @@ export default function Navbar() {
             <motion.a
               href="#pro"
               className="text-[11px] uppercase tracking-[0.15em] font-bold text-tusa-ocean bg-tusa-ocean/10 border border-tusa-ocean/30 px-5 py-2 rounded-full hover:bg-tusa-ocean hover:text-white transition-all duration-300"
-              whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(0,163,224,0.3)' }}
+              whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(0,212,255,0.4)' }}
               whileTap={{ scale: 0.95 }}
             >
               Zona Pro
@@ -113,7 +113,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[99] bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center"
+            className="fixed inset-0 z-[99] bg-[#0b4f7a]/95 backdrop-blur-xl flex flex-col items-center justify-center"
           >
             {/* Background decoration */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">

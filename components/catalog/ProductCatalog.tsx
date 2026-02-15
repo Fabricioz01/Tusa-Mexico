@@ -6,12 +6,19 @@ import {
   products,
   productCategories,
   usageFilters,
-  type ProductCategory,
   type UsageFilter,
 } from '@/lib/data';
 
+const imageFallbackIcon = (
+  <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+    <rect x="4" y="6" width="16" height="12" rx="2" strokeWidth="1.5" />
+    <path d="M6 8l12 8" strokeWidth="1.5" strokeLinecap="round" />
+    <circle cx="9" cy="10" r="1" strokeWidth="1.5" />
+  </svg>
+);
+
 export default function ProductCatalog() {
-  const [activeCategory, setActiveCategory] = useState<ProductCategory>('all');
+  const [activeCategory, setActiveCategory] = useState('all');
   const [activeUsage, setActiveUsage] = useState<UsageFilter>('all');
 
   const filtered = products.filter((p) => {
@@ -21,10 +28,10 @@ export default function ProductCatalog() {
   });
 
   return (
-    <section id="productos" className="py-20 md:py-32 bg-tusa-dark relative overflow-hidden">
+    <section id="productos" className="py-20 md:py-32 bg-gradient-to-br from-[#0b4f7a] via-[#1a67a6] to-[#0b4f7a] relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-tusa-blue/5 rounded-full blur-[120px] animate-float-slow" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-tusa-ocean/5 rounded-full blur-[100px] animate-float-delay" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-tusa-ocean/10 rounded-full blur-[120px] animate-float-slow" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-tusa-sky/10 rounded-full blur-[100px] animate-float-delay" />
 
       {/* Rotating background ring */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] animate-rotate-slow opacity-[0.02]">
@@ -81,7 +88,7 @@ export default function ProductCatalog() {
                 whileTap={{ scale: 0.95 }}
                 className={`px-4 py-2 rounded-full text-xs font-bold tracking-wide transition-all duration-300 ${
                   activeCategory === cat.key
-                    ? 'bg-tusa-blue text-white shadow-lg shadow-tusa-blue/30'
+                    ? 'bg-tusa-ocean text-white shadow-lg shadow-tusa-ocean/30'
                     : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-white/5'
                 }`}
               >
@@ -103,7 +110,7 @@ export default function ProductCatalog() {
                 whileTap={{ scale: 0.95 }}
                 className={`px-4 py-2 rounded-full text-xs font-bold tracking-wide transition-all duration-300 ${
                   activeUsage === u.key
-                    ? 'bg-tusa-ocean text-white shadow-lg shadow-tusa-ocean/30'
+                    ? 'bg-tusa-sky text-white shadow-md shadow-tusa-sky/20'
                     : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-white/5'
                 }`}
               >
@@ -133,12 +140,12 @@ export default function ProductCatalog() {
                 exit={{ opacity: 0, scale: 0.8, y: -20 }}
                 transition={{ duration: 0.4, delay: i * 0.05 }}
                 whileHover={{ y: -8 }}
-                className="group relative bg-zinc-900/50 border border-white/5 rounded-2xl overflow-hidden shimmer-on-hover transition-all duration-500"
+                className="group relative bg-black/30 backdrop-blur-sm border border-white/20 rounded-2xl overflow-hidden hover:border-white/30 shimmer-on-hover transition-all duration-500"
               >
                 {/* Hover glow border */}
                 <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                   style={{
-                    background: `linear-gradient(135deg, ${product.imagePlaceholder}22, transparent 40%, transparent 60%, rgba(0,102,204,0.15))`,
+                    background: `linear-gradient(135deg, ${product.imagePlaceholder}22, transparent 40%, transparent 60%, rgba(0,136,204,0.15))`,
                   }}
                 />
 
@@ -154,7 +161,7 @@ export default function ProductCatalog() {
                   </motion.div>
                 )}
 
-                {/* Image Placeholder */}
+                {/* Icon */}
                 <div className="relative h-48 sm:h-56 flex items-center justify-center overflow-hidden">
                   <div
                     className="absolute inset-0 opacity-20"
@@ -162,13 +169,14 @@ export default function ProductCatalog() {
                       background: `radial-gradient(circle at center, ${product.imagePlaceholder}44, transparent 70%)`,
                     }}
                   />
-                  <motion.span
-                    className="text-zinc-800 font-black text-5xl select-none opacity-20"
-                    whileHover={{ scale: 1.15, rotate: 2 }}
-                    transition={{ type: 'spring', stiffness: 200 }}
-                  >
-                    TUSA
-                  </motion.span>
+                  <div className="relative z-10 flex flex-col items-center gap-2 text-white/80">
+                    <div className="w-16 h-16 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center">
+                      {imageFallbackIcon}
+                    </div>
+                    <span className="text-[10px] uppercase tracking-widest text-white/60">
+                      Imagen no disponible
+                    </span>
+                  </div>
                   <motion.div
                     className="absolute w-32 h-32 rounded-full blur-3xl opacity-30 group-hover:opacity-60 transition-opacity duration-700"
                     style={{ backgroundColor: product.imagePlaceholder }}

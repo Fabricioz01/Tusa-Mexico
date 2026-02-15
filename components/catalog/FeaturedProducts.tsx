@@ -3,22 +3,31 @@
 import { motion } from 'framer-motion';
 import { featuredProducts } from '@/lib/data';
 
+const imageFallbackIcon = (
+  <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+    <rect x="4" y="6" width="16" height="12" rx="2" strokeWidth="1.5" />
+    <path d="M6 8l12 8" strokeWidth="1.5" strokeLinecap="round" />
+    <circle cx="9" cy="10" r="1" strokeWidth="1.5" />
+  </svg>
+);
+
 export default function FeaturedProducts() {
   return (
-    <section className="py-16 md:py-24 bg-black relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-gradient-to-b from-[#0b4f7a] via-[#145b91] to-[#0b4f7a] relative overflow-hidden">
       {/* Animated grid background */}
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage:
-            'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+            'linear-gradient(rgba(0,212,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,0.15) 1px, transparent 1px)',
           backgroundSize: '60px 60px',
+          
         }}
       />
 
       {/* Floating orbs */}
-      <div className="absolute top-20 left-10 w-64 h-64 bg-tusa-ocean/5 rounded-full blur-[100px] animate-float" />
-      <div className="absolute bottom-20 right-10 w-48 h-48 bg-tusa-blue/5 rounded-full blur-[80px] animate-float-delay" />
+      <div className="absolute top-20 left-10 w-64 h-64 bg-tusa-ocean/10 rounded-full blur-[100px] animate-float" />
+      <div className="absolute bottom-20 right-10 w-48 h-48 bg-tusa-sky/10 rounded-full blur-[80px] animate-float-delay" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -63,7 +72,7 @@ export default function FeaturedProducts() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.2 }}
               whileHover={{ y: -12 }}
-              className="group relative bg-gradient-to-b from-zinc-900/80 to-zinc-950/80 border border-white/5 rounded-2xl overflow-hidden shimmer-on-hover card-hover-tilt"
+              className="group relative bg-black/30 backdrop-blur-sm border border-white/20 rounded-2xl overflow-hidden hover:border-white/30 shimmer-on-hover card-hover-tilt"
             >
               {/* Animated corner accent */}
               <div className="absolute top-0 right-0 w-20 h-20 overflow-hidden">
@@ -89,21 +98,22 @@ export default function FeaturedProducts() {
                 </motion.span>
               </div>
 
-              {/* Image area */}
-              <div className="relative h-56 sm:h-64 flex items-center justify-center">
+              {/* Icon area */}
+              <div className="relative h-56 sm:h-64 flex items-center justify-center overflow-hidden">
+                <div className="relative z-10 flex flex-col items-center gap-2 text-white/80">
+                  <div className="w-20 h-20 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center">
+                    {imageFallbackIcon}
+                  </div>
+                  <span className="text-[10px] uppercase tracking-widest text-white/60">
+                    Imagen no disponible
+                  </span>
+                </div>
                 <motion.div
                   className="absolute w-48 h-48 rounded-full blur-[80px] opacity-20 group-hover:opacity-50 transition-opacity duration-700"
                   style={{ backgroundColor: product.imagePlaceholder }}
                   animate={{ scale: [1, 1.1, 1] }}
                   transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                 />
-                <motion.span
-                  className="text-zinc-800 font-black text-7xl select-none opacity-10"
-                  whileHover={{ scale: 1.2, rotate: 3 }}
-                  transition={{ type: 'spring', stiffness: 200 }}
-                >
-                  TUSA
-                </motion.span>
               </div>
 
               {/* Content */}
